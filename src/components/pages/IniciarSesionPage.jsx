@@ -1,67 +1,64 @@
-export default function LoginPage() {
+import { useState } from "react";
+import { FaEnvelope, FaLock } from "react-icons/fa";
+
+function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white shadow-2xl rounded-2xl p-8 w-full max-w-md">
-        
-        {/* Título */}
-        <h2 className="text-3xl font-bold text-center text-gray-800">
+    <div className="w-full flex items-start justify-center bg-gray-100 px-4 py-10">
+      <div className="bg-white w-full max-w-md rounded-2xl shadow-xl p-8 border-2 border-yellow-500">
+
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">
           Iniciar Sesión
         </h2>
 
-        <p className="text-center text-gray-500 mt-2">
-          Bienvenido(a) a <span className="font-semibold">Pizzería Ohana</span>
-        </p>
+        <form className="space-y-6">
 
-        {/* Formulario */}
-        <form className="mt-8 space-y-5">
-          {/* Email */}
           <div>
-            <label className="text-gray-700 font-medium text-sm">
-              Correo electrónico
-            </label>
-            <input
-              type="email"
-              className="w-full mt-1 px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
-              placeholder="tu@email.com"
-            />
+            <label className="text-gray-700 font-semibold text-sm">Email</label>
+            <div className="mt-2 flex items-center gap-3 bg-gray-100 p-3 rounded-lg border">
+              <FaEnvelope className="text-gray-500" />
+              <input
+                type="email"
+                placeholder="Ingrese su correo"
+                className="w-full bg-transparent outline-none text-gray-700"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
           </div>
 
-          {/* Contraseña */}
           <div>
-            <label className="text-gray-700 font-medium text-sm">
-              Contraseña
-            </label>
-            <input
-              type="password"
-              className="w-full mt-1 px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 transition"
-              placeholder="********"
-            />
+            <label className="text-gray-700 font-semibold text-sm">Password</label>
+            <div className="mt-2 flex items-center gap-3 bg-gray-100 p-3 rounded-lg border">
+              <FaLock className="text-gray-500" />
+              <input
+                type="password"
+                placeholder="Ingrese su contraseña"
+                className="w-full bg-transparent outline-none text-gray-700"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
           </div>
 
-          {/* Botón */}
-          <button
-            type="submit"
-            className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 rounded-xl transition"
-          >
-            Ingresar
+          <button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 rounded-lg text-lg">
+            Entrar
           </button>
+
         </form>
 
-        {/* Separador */}
-        <div className="flex items-center gap-3 mt-6">
-          <div className="w-full h-px bg-gray-300"></div>
-          <span className="text-gray-500 text-sm">o</span>
-          <div className="w-full h-px bg-gray-300"></div>
-        </div>
-
-        {/* Crear cuenta */}
-        <p className="text-center text-gray-600 mt-6 text-sm">
-          ¿No tienes una cuenta?
-          <a href="/Registrate-aquí" className="text-red-600 font-semibold hover:underline">
-            {" "}Regístrate aquí
-          </a>
+        <p className="text-center text-gray-600 mt-5 text-sm">
+          ¿No tienes cuenta?{" "}
+          <span className="text-yellow-600 font-bold cursor-pointer hover:underline">
+            Crear cuenta
+          </span>
         </p>
+
       </div>
-    </section>
+    </div>
   );
 }
+
+export default LoginPage;
